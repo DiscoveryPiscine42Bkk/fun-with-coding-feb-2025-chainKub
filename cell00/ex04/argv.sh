@@ -5,5 +5,3 @@ else
     [ "$#" -ge 2 ] && echo "$2"
     [ "$#" -ge 3 ] && echo "$3"
 fi
-
-cd ..
