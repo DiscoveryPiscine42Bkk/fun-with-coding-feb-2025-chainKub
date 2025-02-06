@@ -2,9 +2,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color:aliceblue;
     
 }
 .profile-card{
+    font-size: large;
     text-align: center;
 }
 .card {
@@ -36,10 +38,6 @@ body{
     gap: 10px;
     font-size: 30px;
 }
-/* .instagram{
-    color: #E1306C;
-
-} */
 .contact-btn{
     background:black;
     color: white;
@@ -48,4 +46,20 @@ body{
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
+}
+#ig{
+    color: rgb(252, 76, 0);
+    font-size: 25px;
+}
+#fb{
+    color: blue;
+    font-size: 25px;
+}
+#gh{
+    color:purple;
+    font-size: 25px;
+}
+a{
+    color: white;
+    font-size: 15px;
 }
