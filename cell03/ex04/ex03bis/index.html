@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Task Management</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffdddd;
+        }
+        .container {
+            background-color: #d1e7dd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        #ft_list {
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .toDoItem {
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin: 5px 0;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="newBtn">New</button>
+        <div id="todo-list"></div>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>

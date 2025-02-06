@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body{
+            background-color: azure;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        input {
+            width: 150px;
+            height: 30px;
+            margin: 10px;
+        }
+        select {
+            width: 50px;
+            height: 30px;
+            margin: 10px;
+        }
+        #submit {
+            background-color: green;
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="form" id="leftOperand" placeholder="Enter first number">
+        <select id="operator">
+            <option value="add">+</option>
+            <option value="sub">-</option>
+            <option value="mul">*</option>
+            <option value="div">/</option>
+            <option value="mod">%</option>
+        </select>
+        <input type="form" id="rightOperand" placeholder="Enter second number">
+        <input type="submit" value="Try me!" id="submit">
+
+        <script>
+            $(document).ready(function() {
+                $("#submit").click(function() {
+                    let leftOperand = $("#leftOperand").val();
+                    let operator = $("#operator").val();
+                    let rightOperand = $("#rightOperand").val();
+
+                    if (leftOperand === "" || rightOperand === "" || isNaN(leftOperand) || isNaN(rightOperand) || leftOperand < 0 || rightOperand < 0) {
+                        alert("Error :(");
+                        return;
+                    }
+
+                    leftOperand = parseInt(leftOperand);
+                    rightOperand = parseInt(rightOperand);
+                    let result;
+
+                    if ((operator === "div" || operator === "mod") && rightOperand === 0) {
+                        alert("It’s over 9000!");
+                        console.log("It’s over 9000!");
+                        return;
+                    }
+
+                    switch (operator) {
+                        case "add": result = leftOperand + rightOperand; break;
+                        case "sub": result = leftOperand - rightOperand; break;
+                        case "mul": result = leftOperand * rightOperand; break;
+                        case "div": result = leftOperand / rightOperand; break;
+                        case "mod": result = leftOperand % rightOperand; break;
+                    }
+
+                    alert("Result: " + result);
+                    console.log("Result: ", result);
+                });
+
+                setInterval(() => {
+                    alert("Please, use me...");
+                }, 30000);
+            });
+        </script>
+    </div>
+</body>
+</html>
