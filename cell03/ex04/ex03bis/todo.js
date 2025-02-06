@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    loadTasks();
+    loadTasks(); 
 
     $("#newBtn").click(function() {
         let task = prompt("Enter a new task:");
         if (task && task.trim() !== "") {
-            addTask(task);
-            saveTasks();
+            addTask(task); 
+            saveTasks(); 
         }
     });
 });
@@ -15,8 +15,8 @@ function addTask(task) {
 
     taskElement.click(function() {
         if (confirm("Do you want to remove this task?")) {
-            $(this).remove();
-            saveTasks();
+            $(this).remove(); 
+            saveTasks();     
         }
     });
 
@@ -28,7 +28,13 @@ function saveTasks() {
         return $(this).text();
     }).get();
 
-    document.cookie = "tasks=" + JSON.stringify(tasks) + "; path=/";
+    const encodedTasks = encodeURIComponent(JSON.stringify(tasks));
+
+    try {
+        document.cookie = "tasks=" + encodedTasks + "; path=/"; 
+    } catch (e) {
+        console.error("Failed to save tasks in cookie:", e);
+    }
 }
 
 function loadTasks() {
@@ -36,7 +42,14 @@ function loadTasks() {
     const taskCookie = cookies.find(cookie => cookie.startsWith("tasks="));
 
     if (taskCookie) {
-        const tasks = JSON.parse(taskCookie.split("=")[1]);
-        tasks.forEach(addTask);
+        try {
+            const tasks = JSON.parse(decodeURIComponent(taskCookie.split("=")[1]));
+            
+            tasks.reverse().forEach(function(task) {
+                addTask(task); 
+            });
+        } catch (e) {
+            console.error("Failed to parse tasks from cookie:", e);
+        }
     }
 }
